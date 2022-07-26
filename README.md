@@ -13,6 +13,24 @@ Objetivo principal deste projeto é conseguir alterar o status dos itens de menu
 _Observação:_
 Foram criadas imagens docker para o backend no perfil `test` e `prod` no caso de apenas executar a aplicação pelo Docker sem a necessidade de baixar o projeto todo.
 
+### Requisitos Funcionais
+Um item de menu é um item que está disponível no menu do restaurante, para que possa ser vendido a um cliente.
+O item de menu pode ter uma lista de outros itens de menu sob ele. Esta lista de itens de menu sob outro item de menu é chamado de lista de “componentes”.
+
+Um item de menu pode ser de 3 tipos: PRODUTO [1], ESCOLHA [2] e REFEIÇÃO DE VALOR [3].
+- Um PRODUTO é um produto comum, como Coca-Cola, Hambúrguer ou Batata Frita.
+- Uma ESCOLHA é um item de menu que tem PRODUTOS como componentes.
+  - Por exemplo, um item de menu do tipo ESCOLHA chamado "DRINK CHOICE" pode ter como componentes itens de bebida do menu, como Coca-Cola, Sprite, Fanta, etc.
+- Uma REFEIÇÃO DE VALOR é um item de menu que tem PRODUTOS e ESCOLHAS como componentes.
+  - Por exemplo, um item de menu do tipo REFEIÇÃO DE VALOR chamado "BIG MAC MEAL" pode ter como componentes o PRODUTO Hambúrguer, uma ESCOLHA para bebidas e outra ESCOLHA para acompanhamentos.
+
+O status de um item de menu pode ser ATIVO [1] ou INATIVO [0]. O código para alterar o status de item de menu deve considerar as seguintes regras:
+  - Um item de menu ESCOLHA para ser ativado deve ter pelo menos um componente ATIVO;
+  - Um item de menu REFEIÇÃO DE VALOR para estar ativo deve ter todos os seus componentes ATIVOS.
+  
+_Observação:_
+Todas estas regras foram atendidas e além de conseguir alterar o status de um produto de qualquer tipo, é realizada uma chamada recursiva para que os itens que contenham o item inicialmente atualizado como um de seus componentes também sejam atualizados.
+
 ## Configuração
 
 Foram criados 2 profiles no projeto spring, `test` e `prod` que podem ser encontrados em `menu/src/main/resources`. 
