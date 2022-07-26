@@ -37,7 +37,7 @@ Foram criados 2 profiles no projeto spring, `test` e `prod` que podem ser encont
 
 Para execução do profile `test` não é necessária nenhuma configuração adicional, nela temos a utilização do banco de dados H2. 
 Já na configuração `prod` utilizamos o banco de dados postgresql e para facilitar sua execução foram criados dois arquivos `docker-compose.yml` e `init.sql`, 
-que deverão ser copiados para um mesmo diretório de sua preferência.
+que deverão ser copiados para um mesmo diretório de sua preferência, estes arquivos se encontram no diretório raiz `rdi`.
 
 ## Execução Docker Prod Profile
 
